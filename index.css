@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 4px;
+  
+}
+
+nav > a {
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+    background-color: #FFF7ED;
+    border-radius: 10px 10px 0px 0px;
+    max-width: 500px;
+    min-width: 500px;
+    
+}
+
+nav > div {
+    display: flex;
+    gap: 20px;
+    font-weight: 600;
+}
+
+nav > div > a {
+    text-decoration: none;
+    color: #4D4D4D
+}
+
+.home {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    width: 500px;
+    height: 400px;
+    background-image:url(./img/home.png);
+    color: white;
+    padding: 50px 20px 30px 20px;
+}
+.home > button {
+    background-color: #FF8C38;
+    color: white;
+    border-radius: 7px;
+    width: 100%;
+    padding: 15px;
+    font-weight: 700;
+    word-spacing: 2px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    width: 500px;
+    background-color: #252525;
+    color: #AAAAAA;
+}
+
+.about > img {
+    width: 100px;     /* Ensures the image fills the width */
+    display: block;
+    transform: scale(0.8); /* Shrinks the image to 80% of its size */
+    transform-origin: top; /* Ensures it shrinks toward the top, not the center */
+   
+}
+.crop-container {
+    
+  width: 500px;    /* Or whatever width you need */
+  height: 600px;   /* This cuts it to the top 100px */
+  overflow: hidden;
+  margin-top: -350px;
+}
+.about {
+    width: 500px;
+    overflow: hidden;
+    padding: 15px;
+  
+}
+.about > h2{
+      background-color: #FFCC8D;
+      padding: 50px 80px;
+      font-weight: 700;
+}
+.about > h2> button{
+      background-color: black;
+      margin-top: 20px;
+      margin-bottom: -20px;
+      color: white;
+      font-weight: 600;
+        font-size: medium;
+      padding: 16px;
+      border-radius: 10px;
+}

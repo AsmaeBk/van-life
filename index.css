@@ -66,6 +66,8 @@ footer {
     width: 500px;
     background-color: #252525;
     color: #AAAAAA;
+    width: 100%;
+    max-width: 500px;   /* Keeps it looking like a phone on desktop */
 }
 
 .crop-container > img {

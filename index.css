@@ -3,8 +3,10 @@
 }
 
 html, body {
-    margin: 4px;
-  
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 nav > a {
@@ -20,8 +22,9 @@ nav {
     font-weight: 900;
     background-color: #FFF7ED;
     border-radius: 10px 10px 0px 0px;
-    max-width: 500px;
-    min-width: 500px;
+    width: 100%;        /* Fill the screen */
+    max-width: 500px;   /* But stop growing at 500px */
+    margin: 0 auto;     /* Centers the app on desktop */
     
 }
 
@@ -65,25 +68,27 @@ footer {
     color: #AAAAAA;
 }
 
-.about > img {
-    width: 100px;     /* Ensures the image fills the width */
+.crop-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
     display: block;
-    transform: scale(0.8); /* Shrinks the image to 80% of its size */
-    transform-origin: top; /* Ensures it shrinks toward the top, not the center */
-   
 }
+/* This container acts as the frame the photo */
 .crop-container {
-    
-  width: 500px;    /* Or whatever width you need */
-  height: 600px;   /* This cuts it to the top 100px */
-  overflow: hidden;
-  margin-top: -350px;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;        /* adjust until it matches the second image */
+    overflow: hidden;
+    margin: 0 auto;
 }
 .about {
-    width: 500px;
-    overflow: hidden;
-    padding: 15px;
-  
+    width: 100%;
+    max-width: 500px;   /* Keeps it looking like a phone on desktop */
+    margin: auto auto;
+    padding: 0;         /* Removed padding so image hits the edges */
+    background-color: #FFF7ED;
 }
 .about > h2{
       background-color: #FFCC8D;
@@ -99,4 +104,22 @@ footer {
         font-size: medium;
       padding: 16px;
       border-radius: 10px;
+}
+
+.home {
+    height: auto;       /* Let content define height */
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+.app {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #FFF7ED;
+}
+
+section, nav, footer {
+    padding-inline: 20px;
 }

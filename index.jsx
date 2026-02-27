@@ -23,25 +23,26 @@ import Home from "./components/Home"
 function App() {
   return (
     <BrowserRouter>
-     <nav> 
-        <Link to="/">#VANLIFE</Link>
-        <div>
-          <Link to="about">About</Link>
-          <Link to="">Vans</Link>
-        </div>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home/>}>
-          #VANLIFE
-        </Route>
-        <Route path="about" element={<About/>}>
-          About
-        </Route>
-        // <Route >
-        //   Vans
-        // </Route>
-      </Routes>
-      <footer>Ⓒ 2022 #VANLIFE</footer>
+     <div class="app"><nav> 
+          <Link to="/">#VANLIFE</Link>
+          <div>
+            <Link to="about">About</Link>
+            <Link to="">Vans</Link>
+          </div>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home/>}>
+            #VANLIFE
+          </Route>
+          <Route path="about" element={<About/>}>
+            About
+          </Route>
+          // <Route >
+          //   Vans
+          // </Route>
+        </Routes>
+        <footer>Ⓒ 2022 #VANLIFE</footer>
+      </div>
     </BrowserRouter>
     
   )

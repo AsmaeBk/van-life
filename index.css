@@ -173,6 +173,19 @@ section, nav, footer {
     color: white;
 }
 
+/* Specific type styles */
+.van-type.luxury {
+    background-color: #161616; 
+}
+
+.van-type.simple {
+    background-color: #E17654; 
+}
+
+.van-type.rugged {
+    background-color: #115E59; 
+}
+
 .van-case {
     display: flex;
     justify-content: space-between;

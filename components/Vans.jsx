@@ -47,7 +47,7 @@ export default function Vans() {
                                     <div className="van-case">
                                         <div className="name-type">
                                             <h1 style={{fontWeight:"700", fontSize:"15px"}}>{van.name}</h1>
-                                            <button>{van.type}</button>
+                                            <button className={`van-type ${van.type}`}>{van.type}</button>
                                         </div>
                                             <h1 className="price" style={{fontWeight:"700", fontSize:"15px"}}
                                             >${van.price}

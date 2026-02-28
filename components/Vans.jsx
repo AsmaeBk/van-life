@@ -14,6 +14,7 @@ import "../server"
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
+    const [filter, setFilter] = React.useState("")
     const firstRender = React.useRef(true)
     
     React.useEffect(() => {
@@ -22,33 +23,43 @@ export default function Vans() {
             .then(data => setVans(data.vans))
     }, [])
     
-    console.log(vans)
+    console.log(filter)
     
     return (
-       <div className="vans-style">
-          {
-            vans.map(
-                (van) => {
-                    return(
-                        <div key={van.id}>
-                            <div className="image-container">
-                                <img src={van.imageUrl}/>
-                            </div>
-                            <div className="van-case">
-                                <div className="name-type">
-                                    <h1 style={{fontWeight:"700", fontSize:"15px"}}>{van.name}</h1>
-                                    <button>{van.type}</button>
+       <>  
+           
+            <div className="vans-filter">
+                <button onClick={() => setFilter("simple")}>Simple</button>
+                <button onClick={() => setFilter("rugged")}>Rugged</button>
+                <button onClick={() => setFilter("luxury")}>Luxury</button>
+                <a href="#" onClick={() => setFilter("")}>Clear filter</a>
+            </div>
+            <div className="vans-container">
+                <h1>Explore our van options</h1>
+                {
+                    vans.map(
+                        (van) => {
+                          return(
+                        (filter==="" || filter===van.type) &&        <div key={van.id}>
+                                    <div className="image-container">
+                                        <img src={van.imageUrl}/>
+                                    </div>
+                                    <div className="van-case">
+                                        <div className="name-type">
+                                            <h1 style={{fontWeight:"700", fontSize:"15px"}}>{van.name}</h1>
+                                            <button>{van.type}</button>
+                                        </div>
+                                            <h1 className="price" style={{fontWeight:"700", fontSize:"15px"}}
+                                            >${van.price}
+                                            <span style={{fontWeight:"100", fontSize:"15px"}}>/day</span>
+                                        </h1>
+                                    </div>
                                 </div>
-                                    <h1 className="price" style={{fontWeight:"700", fontSize:"15px"}}
-                                    >${van.price}
-                                    <span style={{fontWeight:"100", fontSize:"15px"}}>/day</span>
-                                </h1>
-                            </div>
-                        </div>
+                            )
+                        }
                     )
                 }
-            )
-          }
-       </div>
+            </div>
+         </>
     )
 }

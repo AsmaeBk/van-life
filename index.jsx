@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Routes, Link, Route} from "react-router-dom"
+import {BrowserRouter, Routes, NavLink, Route} from "react-router-dom"
 import About from "./components/About"
 import Home from "./components/Home"
 import Vans from "./components/Vans"
@@ -24,10 +24,10 @@ function App() {
   return (
     <BrowserRouter>
      <div class="app"><nav> 
-          <Link to="/">#VANLIFE</Link>
+          <NavLink to="/">#VANLIFE</NavLink>
           <div>
-            <Link to="about">About</Link>
-            <Link to="/vans">Vans</Link>
+            <NavLink to="about">About</NavLink>
+            <NavLink to="/vans">Vans</NavLink>
           </div>
         </nav>
         <Routes>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Link, Route} from "react-router-dom"
 import About from "./components/About"
 import Home from "./components/Home"
-
+import Vans from "./components/Vans"
 /**
  * Challenge:
  * Bootstrap the VanLife project by creating the first 2 routes:
@@ -27,7 +27,7 @@ function App() {
           <Link to="/">#VANLIFE</Link>
           <div>
             <Link to="about">About</Link>
-            <Link to="">Vans</Link>
+            <Link to="/vans">Vans</Link>
           </div>
         </nav>
         <Routes>
@@ -37,9 +37,7 @@ function App() {
           <Route path="about" element={<About/>}>
             About
           </Route>
-          // <Route >
-          //   Vans
-          // </Route>
+          <Route path="/vans" element={<Vans />} />
         </Routes>
         <footer>Ⓒ 2022 #VANLIFE</footer>
       </div>

@@ -127,3 +127,54 @@ footer {
 section, nav, footer {
     padding-inline: 20px;
 }
+
+.vans-style {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+    margin-left: 20px;
+    justify-content: center;
+
+}
+
+.van-style {
+    width: 300px;
+}
+
+.image-container {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 25px;
+
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+ 
+}
+
+
+
+.name-type {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-type > button {
+    width: fit-content;
+    padding: 5px;
+    font-size: 14px;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.van-case {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}

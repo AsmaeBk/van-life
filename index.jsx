@@ -23,7 +23,7 @@ import Vans from "./components/Vans"
 function App() {
   return (
     <BrowserRouter>
-     <div class="app"><nav> 
+     <div className="app"><nav> 
           <NavLink to="/">#VANLIFE</NavLink>
           <div>
             <NavLink to="about">About</NavLink>

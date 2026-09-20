@@ -2,230 +2,428 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    overflow-x: hidden;
+    background: #f5f5f5;
+    font-family: Inter, system-ui, sans-serif;
 }
 
-nav > a {
-    text-decoration: none;
-    color: black;
+a {
+    color: inherit;
 }
 
-/* Style specifically for the active link */
-nav a.active {
-    font-weight: bold;
-    color: #161616;
-    border-bottom: 2px solid #161616; /* This creates the "surlined" (underlined) effect */
-}
-
-nav {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 900;
-    background-color: #FFF7ED;
-    border-radius: 10px 10px 0px 0px;
-    width: 100%;        /* Fill the screen */
-    max-width: 500px;   /* But stop growing at 500px */
-    margin: 0 auto;     /* Centers the app on desktop */
-    
-}
-
-nav > div {
-    display: flex;
-    gap: 20px;
-    font-weight: 600;
-}
-
-nav > div > a {
-    text-decoration: none;
-    color: #4D4D4D
-}
-
-.home {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: multiply;
-    width: 500px;
-    height: 400px;
-    background-image:url(./img/home.png);
-    color: white;
-    padding: 50px 20px 30px 20px;
-}
-.home > button {
-    background-color: #FF8C38;
-    color: white;
-    border-radius: 7px;
-    width: 100%;
-    padding: 15px;
-    font-weight: 700;
-    word-spacing: 2px;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    width: 500px;
-    background-color: #252525;
-    color: #AAAAAA;
-    width: 100%;
-    max-width: 500px;   /* Keeps it looking like a phone on desktop */
-}
-
-.crop-container > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    object-position: center;
-    display: block;
-}
-/* This container acts as the frame the photo */
-.crop-container {
-    width: 100%;
-    max-width: 500px;
-    height: 300px;        /* adjust until it matches the second image */
-    overflow: hidden;
-    margin: 0 auto;
-}
-.about {
-    width: 100%;
-    max-width: 500px;   /* Keeps it looking like a phone on desktop */
-    margin: auto auto;
-    padding: 0;         /* Removed padding so image hits the edges */
-    background-color: #FFF7ED;
-}
-.about > h2{
-      background-color: #FFCC8D;
-      padding: 50px 80px;
-      font-weight: 700;
-}
-.about > h2> button{
-    background-color: black;
-    margin-top: 20px;
-    margin-bottom: -20px;
-    color: white;
-    font-weight: 600;
-    font-size: medium;
-    padding: 16px;
-    border-radius: 10px;
-}
-
-.home {
-    height: auto;       /* Let content define height */
-    min-height: 400px;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    max-width: 500px;   /* Keeps it looking like a phone on desktop */
+button,
+a {
+    cursor: pointer;
 }
 
 .app {
     width: 100%;
-    max-width: 500px;
+    max-width: 1100px;
+    min-height: 100vh;
     margin: 0 auto;
-    background-color: #FFF7ED;
-}
-
-section, nav, footer {
-    padding-inline: 20px;
-}
-
-.vans-container {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-    margin-left: 20px;
-    justify-content: center;
-
-}
-
-.van-style {
-    width: 300px;
-}
-
-.image-container {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 25px;
-
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 22px;
- 
-}
-
-
-
-.name-type {
+    background-color: #fff7ed;
     display: flex;
     flex-direction: column;
 }
 
-.name-type > button {
-    width: fit-content;
-    padding: 5px;
-    font-size: 14px;
-    background-color: cadetblue;
-    border: none;
-    border-radius: 5px;
+nav {
+    padding: 22px clamp(24px, 5vw, 64px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    font-weight: 900;
+    background-color: #fff7ed;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav > div {
+    display: flex;
+    gap: 18px;
+    color: #4d4d4d;
+    font-weight: 600;
+}
+
+nav a.active {
+    color: #161616;
+    border-bottom: 2px solid #161616;
+}
+
+main {
+    flex: 1;
+}
+
+.home {
+    min-height: 520px;
+    padding: 90px clamp(26px, 7vw, 80px) 54px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./img/home.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
-/* Specific type styles */
-.van-type.luxury {
-    background-color: #161616; 
+.home h1 {
+    margin: 0 0 22px;
+    max-width: 680px;
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.15;
 }
 
-.van-type.simple {
-    background-color: #E17654; 
+.home p {
+    max-width: 520px;
+    margin-bottom: 44px;
+    line-height: 1.45;
 }
 
-.van-type.rugged {
-    background-color: #115E59; 
+.home a,
+.about-cta a {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.home a {
+    max-width: 500px;
+    background-color: #ff8c38;
+    color: white;
+}
+
+.crop-container {
+    width: 100%;
+    height: clamp(300px, 42vw, 430px);
+    overflow: hidden;
+}
+
+.crop-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about h1,
+.about p {
+    max-width: 780px;
+    padding-inline: clamp(26px, 7vw, 80px);
+}
+
+.about h1 {
+    margin-top: 34px;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+.about p {
+    line-height: 1.5;
+}
+
+.about-cta {
+    margin: 44px clamp(26px, 7vw, 80px);
+    padding: 28px;
+    background-color: #ffcc8d;
+    border-radius: 8px;
+}
+
+.about-cta h2 {
+    margin: 0 0 22px;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.about-cta a {
+    width: fit-content;
+    min-width: 175px;
+    background-color: #161616;
+    color: white;
+}
+
+.vans-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 0 clamp(24px, 5vw, 64px) 34px;
+}
+
+.vans-container > h1 {
+    grid-column: 1 / -1;
+    margin: 28px 0 0;
+    font-size: 28px;
+}
+
+.vans-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px clamp(24px, 5vw, 64px);
+}
+
+.vans-filter button {
+    padding: 10px 14px;
+    background-color: #ffead0;
+    color: #4d4d4d;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.vans-filter button.active-filter {
+    background-color: #161616;
+    color: white;
+}
+
+.status-message {
+    margin: 0;
+    padding: 0 clamp(24px, 5vw, 64px) 24px;
+    color: #4d4d4d;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #b00020;
+}
+
+.success-message {
+    margin-top: 16px;
+    color: #115e59;
+    font-weight: 700;
+}
+
+.van-card {
+    color: #161616;
+    text-decoration: none;
+}
+
+.image-container {
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .van-case {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    gap: 10px;
 }
 
+.name-type h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
 
-.vans-container > h1 {
+.van-type {
+    width: fit-content;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.van-type.luxury {
+    background-color: #161616;
+}
+
+.van-type.simple {
+    background-color: #e17654;
+}
+
+.van-type.rugged {
+    background-color: #115e59;
+}
+
+.price {
+    margin: 0;
+    font-weight: 700;
+    text-align: right;
+}
+
+.price span,
+.detail-price span {
+    display: block;
+    font-weight: 400;
+}
+
+.van-detail {
+    padding: 26px clamp(26px, 6vw, 70px) 44px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #201f1d;
+}
+
+.van-detail img {
     width: 100%;
-    text-align: left;
-    margin: 30px; 
-    font-family: 'Inter', sans-serif;
+    border-radius: 6px;
+    margin-bottom: 28px;
+}
+
+.van-detail h1 {
+    margin: 20px 0 8px;
+}
+
+.detail-price {
+    font-size: 22px;
     font-weight: 700;
 }
 
-.vans-filter {
-    display: flex;
-    gap: 10px;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 20px;
+.detail-price span {
+    display: inline;
+    font-size: 16px;
 }
 
-.vans-filter > button {
-    padding: 10px;
-    background-color: #FFEAD0;
-    color: #4D4D4D;
+.van-detail p {
+    line-height: 1.5;
+}
+
+.rent-button {
+    width: 100%;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
-    font-weight: 600;
+    border-radius: 7px;
+    background-color: #ff8c38;
+    color: white;
+    font-weight: 700;
 }
 
-.vans-filter > a {
-    color: #4D4D4D;
-    font-weight: 600;
+.rentals {
+    padding: 46px clamp(26px, 7vw, 80px);
+}
+
+.rentals h1 {
+    margin-top: 0;
+    font-size: clamp(30px, 4vw, 44px);
+}
+
+.rentals p {
+    max-width: 620px;
+    line-height: 1.5;
+}
+
+.rental-card,
+.empty-rentals {
+    margin-top: 28px;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: #ffead0;
+}
+
+.rental-card {
+    display: grid;
+    gap: 22px;
+}
+
+.rental-card img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.rental-card h2,
+.empty-rentals h2 {
+    margin-bottom: 8px;
+}
+
+.empty-rentals a,
+.clear-rental-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 7px;
+    background-color: #161616;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.clear-rental-button {
+    background-color: #ff8c38;
+}
+
+footer {
+    padding: 26px;
+    text-align: center;
+    background-color: #252525;
+    color: #aaaaaa;
+}
+
+@media (min-width: 700px) {
+    .vans-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .van-detail {
+        display: grid;
+        grid-template-columns: minmax(280px, 1fr) 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    .back-link {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .van-detail img {
+        margin-bottom: 0;
+    }
+
+    .van-detail .van-type,
+    .van-detail h1,
+    .van-detail .detail-price,
+    .van-detail p,
+    .rent-button,
+    .success-message {
+        grid-column: 2;
+    }
+
+    .rental-card {
+        grid-template-columns: minmax(240px, 360px) 1fr;
+        align-items: start;
+    }
+}
+
+@media (min-width: 900px) {
+    body {
+        padding: 24px;
+    }
+
+    .app {
+        min-height: calc(100vh - 48px);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+    }
+}
+
+@media (max-width: 380px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .vans-container {
+        grid-template-columns: 1fr;
+    }
+
 }

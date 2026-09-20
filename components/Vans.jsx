@@ -1,65 +1,58 @@
 import React from "react"
-import "../server"
-/**
- * Challenge: Fetch and map over the data to display it on
- * the vans page. For an extra challenge, spend time styling
- * it to look like the Figma design.
- * 
- * Hints:
- * 1. Use `fetch("/api/vans")` to kick off the request to get the
- *    data from our fake Mirage JS server
- * 2. What React hook would you use to fetch data as soon as the
- *    Vans page loads, and only fetch it the one time?
- */
+import { Link, useSearchParams } from "react-router-dom"
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
-    const [filter, setFilter] = React.useState("")
-    const firstRender = React.useRef(true)
-    
+    const [loading, setLoading] = React.useState(true)
+    const [error, setError] = React.useState(null)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const filter = searchParams.get("type")
+
     React.useEffect(() => {
         fetch("/api/vans")
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Could not load vans")
+                }
+                return res.json()
+            })
             .then(data => setVans(data.vans))
+            .catch(err => setError(err.message))
+            .finally(() => setLoading(false))
     }, [])
-    
-    console.log(filter)
-    
+
+    const displayedVans = filter ? vans.filter(van => van.type === filter) : vans
+    const updateFilter = type => setSearchParams(type ? { type } : {})
+
     return (
-       <>  
-           
-            <div className="vans-filter">
-                <button onClick={() => setFilter("simple")}>Simple</button>
-                <button onClick={() => setFilter("rugged")}>Rugged</button>
-                <button onClick={() => setFilter("luxury")}>Luxury</button>
-                <a href="#" onClick={() => setFilter("")}>Clear filter</a>
-            </div>
+        <main>
             <div className="vans-container">
                 <h1>Explore our van options</h1>
-                {
-                    vans.map(
-                        (van) => {
-                          return(
-                        (filter==="" || filter===van.type) &&        <div key={van.id}>
-                                    <div className="image-container">
-                                        <img src={van.imageUrl}/>
-                                    </div>
-                                    <div className="van-case">
-                                        <div className="name-type">
-                                            <h1 style={{fontWeight:"700", fontSize:"15px"}}>{van.name}</h1>
-                                            <button className={`van-type ${van.type}`}>{van.type}</button>
-                                        </div>
-                                            <h1 className="price" style={{fontWeight:"700", fontSize:"15px"}}
-                                            >${van.price}
-                                            <span style={{fontWeight:"100", fontSize:"15px"}}>/day</span>
-                                        </h1>
-                                    </div>
-                                </div>
-                            )
-                        }
-                    )
-                }
             </div>
-         </>
+            <div className="vans-filter">
+                <button className={filter === "simple" ? "active-filter" : ""} onClick={() => updateFilter("simple")}>Simple</button>
+                <button className={filter === "rugged" ? "active-filter" : ""} onClick={() => updateFilter("rugged")}>Rugged</button>
+                <button className={filter === "luxury" ? "active-filter" : ""} onClick={() => updateFilter("luxury")}>Luxury</button>
+                {filter && <button onClick={() => updateFilter("")}>Clear</button>}
+            </div>
+            {loading && <p className="status-message">Loading vans...</p>}
+            {error && <p className="status-message error-message">{error}</p>}
+            <div className="vans-container">
+                {!loading && !error && displayedVans.map(van => (
+                    <Link to={`/vans/${van.id}`} className="van-card" key={van.id}>
+                        <div className="image-container">
+                            <img src={van.imageUrl} alt={van.name} />
+                        </div>
+                        <div className="van-case">
+                            <div className="name-type">
+                                <h2>{van.name}</h2>
+                                <button className={`van-type ${van.type}`}>{van.type}</button>
+                            </div>
+                            <p className="price">${van.price}<span>/day</span></p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </main>
     )
 }

@@ -1,51 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Routes, NavLink, Route} from "react-router-dom"
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { BrowserRouter, Routes, NavLink, Route } from "react-router-dom"
 import About from "./components/About"
 import Home from "./components/Home"
 import Vans from "./components/Vans"
-/**
- * Challenge:
- * Bootstrap the VanLife project by creating the first 2 routes:
- * Home and About.
- * 
- * Also include the navbar that can link between the two routes.
- * For now, you'll either need to copy/paste the navbar code
- * to both Home and About pages, or you'll need to find a place
- * to put it where it can be shared between the two pages.
- * (Don't overthink this part - just do whatever is easiest for
- * you because we'll learn a better approach very soon)
- * 
- * Review challenge: do all the CSS yourself based on the design
- * linked in the slides.
- */
+import VanDetail from "./components/VanDetail"
+import Rentals from "./components/Rentals"
+import "./server"
 
 function App() {
   return (
     <BrowserRouter>
-     <div className="app"><nav> 
-          <NavLink to="/">#VANLIFE</NavLink>
+      <div className="app">
+        <nav>
+          <NavLink to="/" end>#VANLIFE</NavLink>
           <div>
             <NavLink to="about">About</NavLink>
             <NavLink to="/vans">Vans</NavLink>
+            <NavLink to="/rentals">My Rentals</NavLink>
           </div>
         </nav>
+
         <Routes>
-          <Route path="/" element={<Home/>}>
-            #VANLIFE
-          </Route>
-          <Route path="about" element={<About/>}>
-            About
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
+          <Route path="/vans/:id" element={<VanDetail />} />
+          <Route path="/rentals" element={<Rentals />} />
         </Routes>
-        <footer>Ⓒ 2022 #VANLIFE</footer>
+
+        <footer>&copy; 2022 #VANLIFE</footer>
       </div>
     </BrowserRouter>
-    
   )
 }
 
 ReactDOM
-  .createRoot(document.getElementById('root'))
-  .render(<App />);
+  .createRoot(document.getElementById("root"))
+  .render(<App />)

@@ -306,6 +306,11 @@ main {
     font-weight: 700;
 }
 
+.rent-button:disabled {
+    background-color: #115e59;
+    cursor: not-allowed;
+}
+
 .rentals {
     padding: 46px clamp(26px, 7vw, 80px);
 }
@@ -326,6 +331,11 @@ main {
     padding: 24px;
     border-radius: 8px;
     background-color: #ffead0;
+}
+
+.rentals-list {
+    display: grid;
+    gap: 22px;
 }
 
 .rental-card {
@@ -358,6 +368,26 @@ main {
 
 .clear-rental-button {
     background-color: #ff8c38;
+}
+
+.not-found {
+    padding: 70px clamp(26px, 7vw, 80px);
+}
+
+.not-found h1 {
+    margin-top: 0;
+    font-size: clamp(34px, 5vw, 52px);
+}
+
+.not-found a {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 20px;
+    border-radius: 7px;
+    background-color: #ff8c38;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 footer {

@@ -2,18 +2,17 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export default function Rentals() {
-    const [rental, setRental] = React.useState(null)
+    const [rentals, setRentals] = React.useState([])
 
     React.useEffect(() => {
-        const savedRental = localStorage.getItem("vanlife-rental")
-        if (savedRental) {
-            setRental(JSON.parse(savedRental))
-        }
+        const savedRentals = JSON.parse(localStorage.getItem("vanlife-rentals")) || []
+        setRentals(savedRentals)
     }, [])
 
-    function clearRental() {
-        localStorage.removeItem("vanlife-rental")
-        setRental(null)
+    function cancelRental(id) {
+        const updatedRentals = rentals.filter(rental => rental.id !== id)
+        localStorage.setItem("vanlife-rentals", JSON.stringify(updatedRentals))
+        setRentals(updatedRentals)
     }
 
     return (
@@ -21,16 +20,20 @@ export default function Rentals() {
             <h1>My rentals</h1>
             <p>See the van you requested to rent.</p>
 
-            {rental ? (
-                <div className="rental-card">
-                    <img src={rental.imageUrl} alt={rental.name} />
-                    <div>
-                        <button className={`van-type ${rental.type}`}>{rental.type}</button>
-                        <h2>{rental.name}</h2>
-                        <p>${rental.price}/day</p>
-                        <p>Your rental request is pending confirmation.</p>
-                        <button className="clear-rental-button" onClick={clearRental}>Cancel request</button>
-                    </div>
+            {rentals.length > 0 ? (
+                <div className="rentals-list">
+                    {rentals.map(rental => (
+                        <div className="rental-card" key={rental.id}>
+                            <img src={rental.imageUrl} alt={rental.name} />
+                            <div>
+                                <button className={`van-type ${rental.type}`}>{rental.type}</button>
+                                <h2>{rental.name}</h2>
+                                <p>${rental.price}/day</p>
+                                <p>Your rental request is pending confirmation.</p>
+                                <button className="clear-rental-button" onClick={() => cancelRental(rental.id)}>Cancel request</button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             ) : (
                 <div className="empty-rentals">

@@ -16,7 +16,11 @@ export default function VanDetail() {
                 }
                 return res.json()
             })
-            .then(data => setVan(data.vans))
+            .then(data => {
+                setVan(data.vans)
+                const savedRentals = JSON.parse(localStorage.getItem("vanlife-rentals")) || []
+                setRented(savedRentals.some(rental => rental.id === data.vans.id))
+            })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false))
     }, [id])
@@ -30,7 +34,13 @@ export default function VanDetail() {
     }
 
     function rentVan() {
-        localStorage.setItem("vanlife-rental", JSON.stringify(van))
+        const savedRentals = JSON.parse(localStorage.getItem("vanlife-rentals")) || []
+        const alreadyRented = savedRentals.some(rental => rental.id === van.id)
+
+        if (!alreadyRented) {
+            localStorage.setItem("vanlife-rentals", JSON.stringify([...savedRentals, van]))
+        }
+
         setRented(true)
     }
 
@@ -42,8 +52,8 @@ export default function VanDetail() {
             <h1>{van.name}</h1>
             <p className="detail-price">${van.price}<span>/day</span></p>
             <p>{van.description}</p>
-            <button className="rent-button" onClick={rentVan}>
-                Rent this van
+            <button className="rent-button" onClick={rentVan} disabled={rented}>
+                {rented ? "Rental requested" : "Rent this van"}
             </button>
             {rented && (
                 <p className="success-message">

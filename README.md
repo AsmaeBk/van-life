@@ -1,19 +1,48 @@
-# Getting Started
-Install the dependencies and run the project
-```
+# VanLife
+
+VanLife is a React van rental application that allows users to browse and filter available vans, view detailed van information, submit rental requests, and manage their current rentals.
+
+Built with React, React Router 6, JavaScript, Vite, MirageJS, and localStorage.
+
+## Features
+
+- Browse available vans
+- Filter vans by type using URL search params
+- View detailed van information
+- Submit rental requests
+- Manage multiple rental requests in My Rentals
+- Cancel rental requests
+- Loading and error states for API requests
+- Responsive layout for mobile, tablet, and desktop
+- Custom 404 page
+
+## Getting Started
+
+Install dependencies:
+
+```bash
 npm install
-npm start
 ```
 
-Head over to https://vitejs.dev/ to learn more about configuring vite
-## About Scrimba
+Run the development server:
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Fullstack Developer Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+```bash
+npm run dev
+```
 
-- [Our courses](https://scrimba.com/courses)
-- [The Frontend Career Path](https://scrimba.com/fullstack-path-c0fullstack)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
+Build for production:
 
-Happy Coding!
+```bash
+npm run build
+```
+
+## Notes
+
+The app uses MirageJS to provide a local fake API for van data. Rental requests are stored in `localStorage`, so they stay available after refreshing the browser.
+
+## Future Improvements
+
+- Add rental date fields
+- Add a checkout or confirmation flow
+- Add a deployed app link
+- Add screenshots

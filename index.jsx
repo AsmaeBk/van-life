@@ -6,6 +6,7 @@ import Home from "./components/Home"
 import Vans from "./components/Vans"
 import VanDetail from "./components/VanDetail"
 import Rentals from "./components/Rentals"
+import NotFound from "./components/NotFound"
 import "./server"
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/vans" element={<Vans />} />
           <Route path="/vans/:id" element={<VanDetail />} />
           <Route path="/rentals" element={<Rentals />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <footer>&copy; 2022 #VANLIFE</footer>
